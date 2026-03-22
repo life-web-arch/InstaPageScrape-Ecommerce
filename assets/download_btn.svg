@@ -3,7 +3,6 @@
     <style>
       .btn-bg { animation: pulse 2s ease-in-out infinite; }
       .shimmer { animation: shimmer 2.5s linear infinite; }
-      .arrow { animation: bounce 1.2s ease-in-out infinite; }
       @keyframes pulse {
         0%   { fill: #e0006e; }
         50%  { fill: #ff3399; }
@@ -14,10 +13,6 @@
         20%  { opacity: 1; }
         80%  { opacity: 1; }
         100% { transform: translateX(480px); opacity: 0; }
-      }
-      @keyframes bounce {
-        0%, 100% { transform: translateY(0px); }
-        50%       { transform: translateY(4px); }
       }
     </style>
     <clipPath id="btnclip">
@@ -44,11 +39,7 @@
   <g clip-path="url(#btnclip)">
     <rect class="shimmer" x="0" y="0" width="180" height="72" fill="url(#shimmerGrad)"/>
   </g>
-  <g class="arrow" transform="translate(38, 36)">
-    <text x="0" y="0" font-size="26" text-anchor="middle" dominant-baseline="central"
-          font-family="Arial, sans-serif" fill="white">⬇</text>
-  </g>
-  <text x="225" y="37" font-size="20" font-weight="bold" text-anchor="middle"
+  <text x="210" y="37" font-size="21" font-weight="bold" text-anchor="middle"
         dominant-baseline="central" font-family="Arial, sans-serif"
         fill="white" filter="url(#glow)" letter-spacing="0.5">
     Download InstaPageScrape v1.1
