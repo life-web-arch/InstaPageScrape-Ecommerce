@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="130" viewBox="0 0 760 130">
+  <defs>
+    <style>
+      @keyframes pop {
+        0%   { opacity: 0; transform: scale(0.8); }
+        70%  { transform: scale(1.05); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes dash {
+        0%   { stroke-dashoffset: 60; opacity: 0; }
+        100% { stroke-dashoffset: 0;  opacity: 1; }
+      }
+      @keyframes labelFade {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+      .s1 { animation: pop 0.4s ease both; animation-delay: 0.1s; }
+      .s2 { animation: pop 0.4s ease both; animation-delay: 0.4s; }
+      .s3 { animation: pop 0.4s ease both; animation-delay: 0.7s; }
+      .s4 { animation: pop 0.4s ease both; animation-delay: 1.0s; }
+      .s5 { animation: pop 0.4s ease both; animation-delay: 1.3s; }
+      .l1 { animation: labelFade 0.4s ease both; animation-delay: 0.2s; }
+      .l2 { animation: labelFade 0.4s ease both; animation-delay: 0.5s; }
+      .l3 { animation: labelFade 0.4s ease both; animation-delay: 0.8s; }
+      .l4 { animation: labelFade 0.4s ease both; animation-delay: 1.1s; }
+      .l5 { animation: labelFade 0.4s ease both; animation-delay: 1.4s; }
+      .c1 { animation: dash 0.3s ease both; animation-delay: 0.35s; stroke-dasharray: 60; }
+      .c2 { animation: dash 0.3s ease both; animation-delay: 0.65s; stroke-dasharray: 60; }
+      .c3 { animation: dash 0.3s ease both; animation-delay: 0.95s; stroke-dasharray: 60; }
+      .c4 { animation: dash 0.3s ease both; animation-delay: 1.25s; stroke-dasharray: 60; }
+    </style>
+    <filter id="ushadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.5)"/>
+    </filter>
+  </defs>
+
+  <rect width="760" height="130" rx="16" fill="#0f0f0f"/>
+  <text x="380" y="22" font-size="13" font-weight="bold" text-anchor="middle"
+        fill="#ff007f" font-family="Arial, sans-serif" letter-spacing="2">✦ HOW TO USE ✦</text>
+
+  <!-- Connectors -->
+  <line class="c1" x1="118" y1="72" x2="172" y2="72" stroke="#ff007f" stroke-width="2.5" stroke-linecap="round"/>
+  <line class="c2" x1="270" y1="72" x2="324" y2="72" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+  <line class="c3" x1="422" y1="72" x2="476" y2="72" stroke="#0ea5e9" stroke-width="2.5" stroke-linecap="round"/>
+  <line class="c4" x1="574" y1="72" x2="628" y2="72" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Step 1 -->
+  <g class="s1" filter="url(#ushadow)">
+    <circle cx="72" cy="72" r="38" fill="#ff007f"/>
+    <text x="72" y="65" font-size="22" text-anchor="middle" dominant-baseline="central">🌐</text>
+    <text x="72" y="86" font-size="9" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial, sans-serif">Open Brand</text>
+    <text x="72" y="97" font-size="9" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif">Profile Page</text>
+  </g>
+  <g class="l1">
+    <rect x="52" y="34" width="20" height="20" rx="5" fill="#cc0055"/>
+    <text x="62" y="44" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="white" font-family="Arial, sans-serif">1</text>
+  </g>
+
+  <!-- Step 2 -->
+  <g class="s2" filter="url(#ushadow)">
+    <circle cx="224" cy="72" r="38" fill="#7c3aed"/>
+    <text x="224" y="65" font-size="22" text-anchor="middle" dominant-baseline="central">📜</text>
+    <text x="224" y="86" font-size="9" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial, sans-serif">Scroll &amp; Gather</text>
+    <text x="224" y="97" font-size="9" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif">Post Links</text>
+  </g>
+  <g class="l2">
+    <rect x="204" y="34" width="20" height="20" rx="5" fill="#5b21b6"/>
+    <text x="214" y="44" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="white" font-family="Arial, sans-serif">2</text>
+  </g>
+
+  <!-- Step 3 -->
+  <g class="s3" filter="url(#ushadow)">
+    <circle cx="376" cy="72" r="38" fill="#0ea5e9"/>
+    <text x="376" y="65" font-size="22" text-anchor="middle" dominant-baseline="central">▶️</text>
+    <text x="376" y="86" font-size="9" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial, sans-serif">Start</text>
+    <text x="376" y="97" font-size="9" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif">Auto-Scrape</text>
+  </g>
+  <g class="l3">
+    <rect x="356" y="34" width="20" height="20" rx="5" fill="#0284c7"/>
+    <text x="366" y="44" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="white" font-family="Arial, sans-serif">3</text>
+  </g>
+
+  <!-- Step 4 -->
+  <g class="s4" filter="url(#ushadow)">
+    <circle cx="528" cy="72" r="38" fill="#10b981"/>
+    <text x="528" y="65" font-size="22" text-anchor="middle" dominant-baseline="central">⏳</text>
+    <text x="528" y="86" font-size="9" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial, sans-serif">Wait for</text>
+    <text x="528" y="97" font-size="9" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif">Auto-Navigation</text>
+  </g>
+  <g class="l4">
+    <rect x="508" y="34" width="20" height="20" rx="5" fill="#059669"/>
+    <text x="518" y="44" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="white" font-family="Arial, sans-serif">4</text>
+  </g>
+
+  <!-- Step 5 -->
+  <g class="s5" filter="url(#ushadow)">
+    <circle cx="688" cy="72" r="38" fill="#f59e0b"/>
+    <text x="688" y="65" font-size="22" text-anchor="middle" dominant-baseline="central">🎉</text>
+    <text x="688" y="86" font-size="9" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial, sans-serif">Get Your</text>
+    <text x="688" y="97" font-size="9" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif">HTML Catalog</text>
+  </g>
+  <g class="l5">
+    <rect x="668" y="34" width="20" height="20" rx="5" fill="#d97706"/>
+    <text x="678" y="44" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="white" font-family="Arial, sans-serif">5</text>
+  </g>
+</svg>

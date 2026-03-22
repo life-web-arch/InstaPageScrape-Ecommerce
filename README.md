@@ -1,4 +1,4 @@
-# InstaPageScrape
+#  InstaPageScrape
 
 A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom brand profile and exports a single, self-contained HTML catalog with all images, reels, captions, prices, and post dates. Useful for cataloging products from any clothing, jewellery, or lifestyle brand on Instagram.
 
