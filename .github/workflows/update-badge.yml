@@ -11,10 +11,11 @@ jobs:
   update-badge:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
 
       - name: Update version in SVG
         run: |
@@ -29,4 +30,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/download_btn.svg
           git diff --staged --quiet || git commit -m "chore: update download badge to ${{ github.event.release.tag_name }}"
-          git push
+          git push origin main
