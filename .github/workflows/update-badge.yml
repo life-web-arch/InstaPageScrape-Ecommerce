@@ -19,7 +19,9 @@ jobs:
       - name: Update version in SVG
         run: |
           VERSION="${{ github.event.release.tag_name }}"
-          sed -i "s/Download InstaPageScrape v[0-9]*\.[0-9]*/Download InstaPageScrape $VERSION/" assets/download_btn.svg
+          sed -i "s/Download InstaPageScrape v[0-9][0-9]*\.[0-9][0-9]*/Download InstaPageScrape ${VERSION}/" assets/download_btn.svg
+          echo "Updated SVG to $VERSION"
+          grep "Download" assets/download_btn.svg
 
       - name: Commit updated SVG
         run: |
