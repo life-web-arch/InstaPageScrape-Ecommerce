@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Dham Auto-Scraper V5.3",
+  "version": "5.3",
+  "description": "Auto-navigates posts and exports a single HTML catalog. Uses page JSON extraction for reliable video capture on all browsers.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "*://*.instagram.com/*",
+    "*://*.cdninstagram.com/*",
+    "*://*.fbcdn.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.instagram.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
