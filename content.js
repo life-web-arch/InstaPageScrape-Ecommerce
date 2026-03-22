@@ -364,22 +364,32 @@ function showOutputDialog() {
         const overlay = document.createElement('div');
         overlay.id = 'ig-output-dialog';
         overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999999;display:flex;align-items:center;justify-content:center;font-family:sans-serif;';
-        overlay.innerHTML = '<div style="background:#1a1a1a;border-radius:16px;padding:28px 24px;max-width:340px;width:90%;border:1px solid #ff007f;box-shadow:0 0 40px rgba(255,0,127,0.3);">'
-            + '<h2 style="color:#ff007f;margin:0 0 6px 0;font-size:18px;text-align:center;">Choose Output Format</h2>'
-            + '<p style="color:#aaa;font-size:12px;text-align:center;margin:0 0 20px 0;">How would you like to save your scraped data?</p>'
-            + '<div id="opt-html" onclick="window._igChoice='html'; document.querySelectorAll('.ig-opt').forEach(e=>e.style.borderColor='#444'); this.style.borderColor='#ff007f';" class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;transition:border-color 0.2s;">'
-            + '<div style="color:white;font-weight:bold;font-size:14px;">🌐 HTML Catalog</div>'
-            + '<div style="color:#aaa;font-size:11px;margin-top:4px;">Single HTML file with all media embedded. <span style="color:#f59e0b;font-weight:bold;">⚠ Media links are temporary (expire in hours) — open and download soon.</span></div></div>'
-            + '<div id="opt-zip" onclick="window._igChoice='zip'; document.querySelectorAll('.ig-opt').forEach(e=>e.style.borderColor='#444'); this.style.borderColor='#00ffcc';" class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;transition:border-color 0.2s;">'
-            + '<div style="color:white;font-weight:bold;font-size:14px;">📦 ZIP Folder <span style="background:#00ffcc;color:black;font-size:10px;padding:2px 6px;border-radius:4px;margin-left:6px;">RECOMMENDED</span></div>'
-            + '<div style="color:#aaa;font-size:11px;margin-top:4px;">Downloads all media files permanently. Each post gets its own folder with images, videos and caption. No expiry.</div></div>'
-            + '<div id="opt-both" onclick="window._igChoice='both'; document.querySelectorAll('.ig-opt').forEach(e=>e.style.borderColor='#444'); this.style.borderColor='#7c3aed';" class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:18px;cursor:pointer;transition:border-color 0.2s;">'
-            + '<div style="color:white;font-weight:bold;font-size:14px;">✨ Both</div>'
-            + '<div style="color:#aaa;font-size:11px;margin-top:4px;">Export both the HTML catalog and the ZIP folder.</div></div>'
-            + '<div style="display:flex;gap:10px;">'
-            + '<button onclick="document.getElementById('ig-output-dialog').remove(); window._igResolve(null);" style="flex:1;background:#333;color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;font-size:13px;">Cancel</button>'
-            + '<button onclick="const c=window._igChoice; if(!c){alert('Please select an option first.');return;} document.getElementById('ig-output-dialog').remove(); window._igResolve(c);" style="flex:2;background:#ff007f;color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:13px;">Start Scraping ▶</button>'
-            + '</div></div>';
+        overlay.innerHTML = `
+        <div style="background:#1a1a1a;border-radius:16px;padding:28px 24px;max-width:340px;width:90%;border:1px solid #ff007f;box-shadow:0 0 40px rgba(255,0,127,0.3);">
+            <h2 style="color:#ff007f;margin:0 0 6px 0;font-size:18px;text-align:center;">Choose Output Format</h2>
+            <p style="color:#aaa;font-size:12px;text-align:center;margin:0 0 20px 0;">How would you like to save your scraped data?</p>
+            <div id="opt-html" onclick="window._igChoice='html'; document.querySelectorAll('.ig-opt').forEach(e=>e.style.borderColor='#444'); this.style.borderColor='#ff007f';"
+                class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;transition:border-color 0.2s;">
+                <div style="color:white;font-weight:bold;font-size:14px;">🌐 HTML Catalog</div>
+                <div style="color:#aaa;font-size:11px;margin-top:4px;">Single HTML file with all media embedded. <span style="color:#f59e0b;font-weight:bold;">⚠ Media links expire in hours — open and download soon.</span></div>
+            </div>
+            <div id="opt-zip" onclick="window._igChoice='zip'; document.querySelectorAll('.ig-opt').forEach(e=>e.style.borderColor='#444'); this.style.borderColor='#00ffcc';"
+                class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;transition:border-color 0.2s;">
+                <div style="color:white;font-weight:bold;font-size:14px;">📦 ZIP Folder <span style="background:#00ffcc;color:black;font-size:10px;padding:2px 6px;border-radius:4px;margin-left:6px;">RECOMMENDED</span></div>
+                <div style="color:#aaa;font-size:11px;margin-top:4px;">Downloads all media permanently. Each post gets its own folder with images, videos and caption. No expiry.</div>
+            </div>
+            <div id="opt-both" onclick="window._igChoice='both'; document.querySelectorAll('.ig-opt').forEach(e=>e.style.borderColor='#444'); this.style.borderColor='#7c3aed';"
+                class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:18px;cursor:pointer;transition:border-color 0.2s;">
+                <div style="color:white;font-weight:bold;font-size:14px;">✨ Both</div>
+                <div style="color:#aaa;font-size:11px;margin-top:4px;">Export both the HTML catalog and the ZIP folder.</div>
+            </div>
+            <div style="display:flex;gap:10px;">
+                <button onclick="document.getElementById('ig-output-dialog').remove(); window._igResolve(null);"
+                    style="flex:1;background:#333;color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;font-size:13px;">Cancel</button>
+                <button onclick="const c=window._igChoice; if(!c){alert('Please select an option first.');return;} document.getElementById('ig-output-dialog').remove(); window._igResolve(c);"
+                    style="flex:2;background:#ff007f;color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:13px;">Start Scraping ▶</button>
+            </div>
+        </div>`;
         window._igResolve = resolve;
         window._igChoice = null;
         document.body.appendChild(overlay);
