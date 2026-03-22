@@ -51,7 +51,9 @@ bash setup.sh
 
 ## Installation
 
-### Android (Kiwi Browser/any browser with Extension support)
+<details>
+<summary><b>📱 Android — Kiwi Browser (or any browser with extension support)</b></summary>
+<br>
 
 **Option A — Download release ZIP (easiest, no Termux needed):**
 1. Download `instapagescrape.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
@@ -65,7 +67,11 @@ bash setup.sh
 ```
 Then open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP from Downloads
 
-### iOS (iPhone / iPad — Orion Browser/any browser with Extension support)
+</details>
+
+<details>
+<summary><b>🍎 iOS — Orion Browser (or any browser with extension support)</b></summary>
+<br>
 
 iOS Safari does not support extensions, but **Orion Browser** by Kagi supports Chrome extensions natively on iOS with no sideloading required.
 
@@ -76,17 +82,21 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
    - Upload to iCloud Drive / Google Drive from another device and open on iPhone
    - Use [a-Shell](https://apps.apple.com/app/a-shell/id1473805438) (free terminal app for iOS) — run `bash setup.sh` after cloning with `gh`
 3. In Orion → Settings → Extensions → tap **"+"** → **Load unpacked extension** → select the ZIP
-4. Navigate to any Instagram brand profile and the **InstaPageScrape v1.0** panel will appear
+4. Navigate to any Instagram brand profile and the **InstaPageScrape v1.2** panel will appear
 
-> **Note:** Safari extensions via the App Store cannot run Chrome extension APIs (`chrome.storage`, `chrome.webRequest`) so they will not work. Orion is currently the only iOS browser with full Chrome extension support.
+> **Note:** Safari extensions via the App Store cannot run Chrome extension APIs so they will not work. Orion is currently the only iOS browser with full Chrome extension support.
 
----
+</details>
 
-### Desktop (Chrome / Edge)
+<details>
+<summary><b>🖥️ Desktop — Chrome / Edge</b></summary>
+<br>
 
 1. Run `bash setup.sh`
 2. Open `chrome://extensions` → Enable Developer Mode
 3. Click **Load unpacked** → select `~/instascraper_auto/`
+
+</details>
 
 ---
 
