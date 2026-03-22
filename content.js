@@ -371,7 +371,12 @@ async function extractPostData(queue, scrapedData) {
         const { outputMode = 'html' } = await chrome.storage.local.get(['outputMode']);
         await chrome.storage.local.set({ scrapeState: 'IDLE' });
         if (outputMode === 'html' || outputMode === 'both') exportToHTML(scrapedData);
-        if (outputMode === 'zip' || outputMode === 'both') await exportToZip(scrapedData);
+        // Delay ZIP export so the HTML download has time to trigger before we start
+        // the ZIP process — prevents Kiwi Browser from interrupting the second download
+        if (outputMode === 'zip' || outputMode === 'both') {
+            await new Promise(r => setTimeout(r, 2500));
+            await exportToZip(scrapedData);
+        }
     }
 }
 
