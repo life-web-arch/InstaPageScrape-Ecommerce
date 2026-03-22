@@ -4,7 +4,7 @@ A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom bra
 
 <p align="center">
   <a href="https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest/download/instapagescrape.zip">
-    <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/download_btn.svg" alt="Download InstaPageScrape v1.1" width="420"/>
+    <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/download_btn.svg" alt="Download InstaPageScrape (LATEST)" width="420"/>
   </a>
 </p>
 
