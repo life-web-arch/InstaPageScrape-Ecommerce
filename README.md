@@ -130,4 +130,4 @@ For reels, only the single highest-quality URL is kept. For carousel posts, all 
 - Works with any public Instagram ecom/brand profile
 - Instagram CDN URLs expire — download media soon after scraping
 - No data leaves your device; everything is processed locally
-- Tested on Kiwi Browser (Android) v131+ and Orion Browser (iOS) v1.x
+- Tested on Kiwi Browser (Android)
