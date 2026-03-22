@@ -4,6 +4,8 @@ A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom bra
 
 [![Latest Release](https://img.shields.io/github/v/release/life-web-arch/InstaPageScrape-Ecommerce?label=Download&color=ff007f)](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest/download/instapagescrape.zip)
 
+![Download v1.1](https://img.shields.io/badge/⬇_Download_Latest_Release-v1.1-ff007f?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest/download/instapagescrape.zip)
+
 > **Quickest install:** Download the ZIP directly from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest) — no Termux/Terminal or git required.
 
 ---
