@@ -2,7 +2,7 @@
 
 A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom brand profile and exports a single, self-contained HTML catalog with all images, reels, captions, prices, and post dates. Useful for cataloging products from any clothing, jewellery, or lifestyle brand on Instagram.
 
-[![Latest Release](https://img.shields.io/github/v/release/life-web-arch/InstaPageScrape-Ecommerce?label=Download+v1.0&color=ff007f)](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest/download/instapagescrape.zip)
+[![Latest Release](https://img.shields.io/github/v/release/life-web-arch/InstaPageScrape-Ecommerce?label=Download&color=ff007f)](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest/download/instapagescrape.zip)
 
 > **Quickest install:** Download the ZIP directly from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest) — no Termux/Terminal or git required.
 
