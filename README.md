@@ -69,7 +69,23 @@ bash setup.sh
 
 **Option A — Download release ZIP (easiest, no Termux needed):**
 1. Download `instapagescrape.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
-2. Open Kiwi Browser → Menu → Extensions → ⋮ → + (from zip/.crx/.user.js) → select the ZIP
+<details>
+<summary><b>📸 Visual guide — where to find Extensions in Kiwi Browser</b></summary>
+<br>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/screenshots/kiwi_step1_menu.png" width="280" alt="Step 1 — Tap three dots menu then Extensions"/>
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/screenshots/kiwi_step2_extensions.png" width="280" alt="Step 2 — Tap + from zip then reload"/>
+</p>
+
+**Step 1:** Tap the **⋮ three dots menu** → Extensions
+
+**Step 2:** Tap **+ (from .zip/.crx/.user.js)** → select the ZIP → tap the **🔄 reload button** after installing
+
+</details>
+
+2. Open Kiwi Browser → ⋮ →  Extensions → + (from zip/.crx/.user.js) → select the ZIP
 3. Navigate to any Instagram brand profile and the **InstaPageScrape** panel will appear
 (⚠️keep refreshing the Insta profile page, until the extension panel popup shows up) 
 
@@ -79,7 +95,7 @@ gh repo clone InstaPageScrape-Ecommerce
 cd InstaPageScrape-Ecommerce
 bash setup.sh
 ```
-Then open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP from Downloads
+Then open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension / '+ (from zip/.crx/.user.js)' → select the ZIP from Downloads
 
 </details>
 
