@@ -131,7 +131,10 @@ function injectProfileUI() {
     btnStart.onclick = async () => {
         const queue = Array.from(collectedLinks);
         if (queue.length === 0) return alert("Gather links first!");
-        await chrome.storage.local.set({ scrapeState: 'SCRAPING', scrapeQueue: queue, scrapedData: [] });
+        const profileUrl = window.location.href.split('?')[0];
+        const handleMatch = profileUrl.match(/instagram\.com\/([^/?]+)/);
+        const profileHandle = handleMatch ? '@' + handleMatch[1] : '';
+        await chrome.storage.local.set({ scrapeState: 'SCRAPING', scrapeQueue: queue, scrapedData: [], profileUrl, profileHandle });
         window.location.href = queue[0];
     };
 }
@@ -380,8 +383,9 @@ async function extractPostData(queue, scrapedData) {
 }
 
 // --- FULL FEATURED HTML GENERATOR ---
-function exportToHTML(data) {
+async function exportToHTML(data) {
     if (!data || data.length === 0) return alert("No data scraped!");
+    const { profileHandle = '', profileUrl = '' } = await chrome.storage.local.get(['profileHandle', 'profileUrl']);
     let pricedPosts = [];
     data.forEach((post, index) => {
         if (post.price !== "Price not mentioned") {
