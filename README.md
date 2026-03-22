@@ -156,6 +156,17 @@ For reels, only the single highest-quality URL is kept. For carousel posts, all 
 
 ---
 
+## Safety Recommendation
+
+> ⚠️ To reduce the risk of your Instagram account being flagged for **suspicious or automated behavior**:
+> - Use a **throwaway Instagram account** when scraping
+> - Or scrape while **not logged in** (works on public profiles)
+> - Scrape in **small batches** — avoid scraping hundreds of posts in one session
+>
+> This warning is also shown the first time you install the extension.
+
+---
+
 ## Notes
 
 - Works with any public Instagram ecom/brand profile

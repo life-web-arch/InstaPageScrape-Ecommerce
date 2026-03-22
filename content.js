@@ -57,6 +57,33 @@ function makeDraggable(element, handle) {
 // --- PROFILE PAGE UI ---
 function injectProfileUI() {
     if (document.getElementById('ig-scraper-panel')) return;
+
+    // First-time safety warning
+    chrome.storage.local.get(['warningShown'], (result) => {
+        if (!result.warningShown) {
+            const warn = document.createElement('div');
+            warn.id = 'ig-safety-warning';
+            warn.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:9999999;display:flex;align-items:center;justify-content:center;font-family:sans-serif;';
+            warn.innerHTML = `
+            <div style="background:#1a1a1a;border-radius:16px;padding:28px 22px;max-width:340px;width:90%;border:2px solid #f59e0b;box-shadow:0 0 40px rgba(245,158,11,0.3);">
+                <div style="font-size:36px;text-align:center;margin-bottom:12px;">⚠️</div>
+                <h2 style="color:#f59e0b;margin:0 0 10px 0;font-size:17px;text-align:center;">Safety Recommendation</h2>
+                <p style="color:#ddd;font-size:13px;line-height:1.6;margin:0 0 14px 0;">To be extra safer from your account being flagged for <b style="color:#f59e0b;">suspicious activity or automated behavior</b>, we strongly recommend:</p>
+                <div style="background:#111;border-radius:10px;padding:14px;margin-bottom:16px;">
+                    <div style="color:white;font-size:13px;margin-bottom:8px;">✅ &nbsp;Use a <b>throwaway Instagram account</b> for scraping</div>
+                    <div style="color:white;font-size:13px;margin-bottom:8px;">✅ &nbsp;Or scrape while <b>not logged in</b> (public profiles only)</div>
+                    <div style="color:white;font-size:13px;">✅ &nbsp;Scrape in <b>small batches</b>, not hundreds at once</div>
+                </div>
+                <p style="color:#888;font-size:11px;text-align:center;margin:0 0 18px 0;">This warning is shown only once.</p>
+                <button id="ig-warn-ok" style="width:100%;background:#f59e0b;color:black;border:none;padding:12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:14px;">I Understand — Continue</button>
+            </div>`;
+            document.body.appendChild(warn);
+            document.getElementById('ig-warn-ok').addEventListener('click', () => {
+                warn.remove();
+                chrome.storage.local.set({ warningShown: true });
+            });
+        }
+    });
     const panel = document.createElement('div');
     panel.id = 'ig-scraper-panel';
     panel.style.cssText = `position: fixed; bottom: 80px; right: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #00ffcc; display: flex; flex-direction: column; gap: 10px; width: 200px; min-width: 160px; max-width: 340px; resize: horizontal; overflow: auto;`;
