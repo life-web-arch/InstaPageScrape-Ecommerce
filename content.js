@@ -394,6 +394,8 @@ function exportToHTML(data) {
     body.dark .ranking-box li { border-bottom-color: #333; }
     #dark-toggle { position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: #222; color: white; border: 2px solid #ff007f; border-radius: 50px; padding: 8px 16px; cursor: pointer; font-size: 14px; font-weight: bold; box-shadow: 0 4px 12px rgba(255,0,127,0.3); transition: all 0.2s; }
     #dark-toggle:hover { background: #ff007f; }
+    .profile-banner { text-align: center; padding: 10px; margin-bottom: 10px; background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); font-size: 14px; }
+    body.dark .profile-banner { background: #1a1a1a; }
     h1 { text-align: center; color: #ff007f; margin-bottom: 5px; } .stats { text-align: center; color: #666; font-size: 14px; margin-bottom: 20px; }
     .ranking-box { background: white; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #f1c40f;}
     .ranking-box h3 { margin: 0 0 10px 0; font-size: 16px; } .ranking-box ul { list-style: none; padding: 0; margin: 0; }
@@ -432,7 +434,7 @@ function exportToHTML(data) {
     window.onload=function(){if(localStorage.getItem("igDark")==="1"){document.body.classList.add("dark");document.getElementById("dark-toggle").textContent="☀️ Light Mode";}}
     async function forceDownload(a,b){try{const c=await fetch(a),d=await c.blob(),e=document.createElement("a");e.href=URL.createObjectURL(d),e.download="InstaPageScrape_"+Date.now()+b,document.body.appendChild(e),e.click(),document.body.removeChild(e)}catch(c){window.open(a,"_blank")}}
     </script></head><body><h1>InstaPageScrape — Catalog</h1>
-    <button id="dark-toggle" onclick="toggleDark()">🌙 Dark Mode</button><div class="stats">Total Items Scraped: ${data.length}</div>${rankHtml}
+    <button id="dark-toggle" onclick="toggleDark()">🌙 Dark Mode</button>${profileHandle ? `<div class="profile-banner">📸 <a href="${profileUrl}" target="_blank" style="color:#ff007f;font-weight:bold;text-decoration:none;">${profileHandle}</a> &nbsp;·&nbsp; <a href="${profileUrl}" target="_blank" style="color:#aaa;font-size:12px;">${profileUrl}</a></div>` : ""}<div class="stats">Total Items Scraped: ${data.length}</div>${rankHtml}
     <div class="filter-container"><button class="toggle-btn" onclick="toggleFilters()">⚙️ Toggle Filters</button><div class="filter-bar hidden" id="filter-bar">
     <label class="filter-label"><input type="checkbox" id="chk-img" checked onchange="applyFilters()"> 🖼️ Images</label>
     <label class="filter-label"><input type="checkbox" id="chk-vid" checked onchange="applyFilters()"> 🎥 Reels</label>
