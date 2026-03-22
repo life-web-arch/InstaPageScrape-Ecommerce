@@ -442,8 +442,7 @@ async function exportToZip(data) {
             '',
             '--- Caption ---',
             post.caption || '(no caption)'
-        ].join('
-');
+        ].join('\n');
         postFolder.file('caption.txt', captionText);
         let mediaIndex = 1;
         for (const mediaUrl of post.media) {
@@ -497,8 +496,7 @@ async function exportToZip(data) {
             if (blob) {
                 postFolder.file(filename, blob);
             } else {
-                postFolder.file('media_' + String(mediaIndex).padStart(2,'0') + '_url.txt', 'Could not download.
-Open manually: ' + mediaUrl);
+                postFolder.file('media_' + String(mediaIndex).padStart(2,'0') + '_url.txt', 'Could not download.\nOpen manually: ' + mediaUrl);
             }
             mediaIndex++;
         }
