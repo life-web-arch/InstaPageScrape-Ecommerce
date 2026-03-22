@@ -81,7 +81,7 @@ bash setup.sh
 
 **Step 1:** Tap **⋮ menu** → Extensions &nbsp;|&nbsp; 
 **Step 2:** Tap **+ (from .zip/.crx/.user.js)** → select ZIP → tap **🔄 reload**
-- 3. Navigate to any Instagram brand profile and the **InstaPageScrape** panel will appear
+ 3. Navigate to any Instagram brand profile and the **InstaPageScrape** panel will appear
 (⚠️keep refreshing the Insta profile page, until the extension panel popup shows up) 
 
 **Option B — via [Termux](https://f-droid.org/packages/com.termux) + git:**
