@@ -49,6 +49,23 @@ bash setup.sh
 2. Open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension
 3. Select the ZIP from your Downloads folder
 
+### iOS (iPhone / iPad)
+
+iOS Safari does not support extensions, but **Orion Browser** by Kagi supports Chrome extensions natively on iOS with no sideloading required.
+
+1. Install [Orion Browser](https://apps.apple.com/app/orion-browser-by-kagi/id1484498200) from the App Store (free)
+2. Get the ZIP onto your iPhone — easiest options:
+   - **Download directly:** grab `dham_auto_scraper.zip` from the [Latest Release](https://github.com/YOUR_USERNAME/InstaPageScrape-dham_clothing/releases/latest) in Safari, then open with Orion
+   - AirDrop it from a Mac where you ran `bash setup.sh`
+   - Upload to iCloud Drive / Google Drive from another device and open on iPhone
+   - Use [a-Shell](https://apps.apple.com/app/a-shell/id1473805438) (free terminal app for iOS) — run `bash setup.sh` after cloning with `gh`
+3. In Orion → Settings → Extensions → tap **"+"** → **Load unpacked extension** → select the ZIP
+4. Navigate to an Instagram profile and the **✥ V5.3 ✥** panel will appear
+
+> **Note:** Safari extensions via the App Store cannot run Chrome extension APIs (`chrome.storage`, `chrome.webRequest`) so they won't work. Orion is currently the only iOS browser with full Chrome extension support.
+
+---
+
 ### Desktop (Chrome / Edge)
 
 1. Run `bash setup.sh`
