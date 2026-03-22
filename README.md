@@ -61,7 +61,7 @@ bash setup.sh
 
 ---
 
-## Installation
+## Installation (Tap "▶" to expand the corresponding section) 
 
 <details>
 <summary><b>📱 Android — Kiwi Browser (or any browser with extension support)</b></summary>
