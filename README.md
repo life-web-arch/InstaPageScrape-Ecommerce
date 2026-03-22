@@ -13,7 +13,19 @@ A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom bra
 
 ---
 
+## How It Works
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/how_it_works.svg" width="760" alt="How It Works"/>
+</p>
+
+---
+
 ## Features
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/features.svg" width="760" alt="Features"/>
+</p>
 
 - **Auto-scrapes** all gathered post links one by one without manual interaction
 - **Images + Reels** — captures both; uses Instagram's embedded page JSON for reliable video URL extraction (no network interception required)
@@ -101,6 +113,10 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 ---
 
 ## Usage
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/usage_guide.svg" width="760" alt="Usage Guide"/>
+</p>
 
 1. Open any Instagram brand/ecom profile page in Kiwi or Orion Browser
 2. Tap **"1. Scroll & Gather Links"** — scroll down to load posts, tap again to stop
