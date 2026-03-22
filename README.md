@@ -152,7 +152,7 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 </p>
 
 1. Open any Instagram brand/ecom profile page in Kiwi or Orion Browser
-2. Tap **"1. Scroll & Gather Links"** — scroll down to load posts, tap again to stop
+2. Tap **"1. Scroll & Gather Links"** — The extension auto-scrolls down the page to load posts, tap again to stop
 3. Tap **"2. Start Auto-Scrape"** — the extension navigates each post automatically
 4. When done, the HTML catalog downloads automatically
 5. Open the HTML file in any browser to browse, filter, and download media
