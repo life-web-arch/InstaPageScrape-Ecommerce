@@ -94,7 +94,7 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
    - Upload to iCloud Drive / Google Drive from another device and open on iPhone
    - Use [a-Shell](https://apps.apple.com/app/a-shell/id1473805438) (free terminal app for iOS) — run `bash setup.sh` after cloning with `gh`
 3. In Orion → Settings → Extensions → tap **"+"** → **Load unpacked extension** → select the ZIP
-4. Navigate to any Instagram brand profile and the **InstaPageScrape v1.2** panel will appear
+4. Navigate to any Instagram brand profile and the **InstaPageScrape** panel will appear
 
 > **Note:** Safari extensions via the App Store cannot run Chrome extension APIs so they will not work. Orion is currently the only iOS browser with full Chrome extension support.
 
