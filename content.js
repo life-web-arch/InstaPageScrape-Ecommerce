@@ -1,4 +1,4 @@
-// --- STATE MANAGEMENT ---
+//  --- STATE MANAGEMENT ---
 let isGathering = false;
 
 async function init() {
@@ -62,7 +62,7 @@ function injectProfileUI() {
     panel.style.cssText = `position: fixed; bottom: 80px; right: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #00ffcc; display: flex; flex-direction: column; gap: 10px; width: 200px;`;
 
     panel.innerHTML = `
-        <div id="drag-handle-profile" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#00ffcc; font-size:14px;">InstaPageScrape v1.0</b></div>
+        <div id="drag-handle-profile" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#00ffcc; font-size:14px;">InstaPageScrape v1.2</b></div>
         <button id="btn-gather" style="background:#444; color:white; padding:10px; border-radius:8px; border:none; cursor:pointer;">1. Scroll & Gather Links</button>
         <div id="gather-status" style="font-size:12px; text-align:center; color:#aaa;">Links found: 0</div>
         <button id="btn-start" style="background:#ff007f; color:white; padding:10px; border-radius:8px; border:none; cursor:pointer; font-weight:bold; display:none;">2. Start Auto-Scrape</button>

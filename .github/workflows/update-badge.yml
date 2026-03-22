@@ -4,6 +4,9 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: write
+
 jobs:
   update-badge:
     runs-on: ubuntu-latest
@@ -16,12 +19,12 @@ jobs:
       - name: Update version in SVG
         run: |
           VERSION="${{ github.event.release.tag_name }}"
-          sed -i "s/{{VERSION}}/$VERSION/g" assets/download_btn.svg
+          sed -i "s/Download InstaPageScrape v[0-9]*\.[0-9]*/Download InstaPageScrape $VERSION/" assets/download_btn.svg
 
       - name: Commit updated SVG
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/download_btn.svg
-          git commit -m "chore: update download badge to ${{ github.event.release.tag_name }}"
+          git diff --staged --quiet || git commit -m "chore: update download badge to ${{ github.event.release.tag_name }}"
           git push
