@@ -18,6 +18,7 @@ echo "▶ Build directory: $BUILD_DIR"
 cp "$SCRIPT_DIR/manifest.json" "$BUILD_DIR/manifest.json"
 cp "$SCRIPT_DIR/background.js" "$BUILD_DIR/background.js"
 cp "$SCRIPT_DIR/content.js"    "$BUILD_DIR/content.js"
+cp "$SCRIPT_DIR/jszip.min.js" "$BUILD_DIR/jszip.min.js"
 echo "▶ Files copied successfully"
 
 cd "$BUILD_DIR"
