@@ -155,7 +155,7 @@ function injectPostUI(queueLen, dataLen) {
     document.getElementById('btn-stop-export').onclick = async () => {
         const { scrapedData } = await chrome.storage.local.get(['scrapedData']);
         await chrome.storage.local.set({ scrapeState: 'IDLE' });
-        exportToHTML(scrapedData);
+        await exportToHTML(scrapedData);
     };
 }
 
@@ -375,7 +375,7 @@ async function extractPostData(queue, scrapedData) {
     if (queue.length > 0) window.location.href = queue[0];
     else {
         await chrome.storage.local.set({ scrapeState: 'IDLE' });
-        exportToHTML(scrapedData);
+        await exportToHTML(scrapedData);
     }
 }
 
@@ -503,4 +503,3 @@ function exportToHTML(data) {
 }
 
 window.addEventListener('load', init);
-setTimeout(init, 2000);
