@@ -59,7 +59,7 @@ function injectProfileUI() {
     if (document.getElementById('ig-scraper-panel')) return;
     const panel = document.createElement('div');
     panel.id = 'ig-scraper-panel';
-    panel.style.cssText = `position: fixed; bottom: 80px; right: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #00ffcc; display: flex; flex-direction: column; gap: 10px; width: 200px; min-width: 160px; max-width: 360px;`;
+    panel.style.cssText = `position: fixed; bottom: 80px; right: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #00ffcc; display: flex; flex-direction: column; gap: 10px; width: 200px; min-width: 160px; max-width: 340px; resize: horizontal; overflow: auto;`;
 
     panel.innerHTML = `
         <div id="drag-handle-profile" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333; cursor:grab;"><b id="profile-header-text" style="color:#00ffcc; font-size:13px; transition:opacity 0.3s;">InstaPageScrape</b></div>
@@ -71,25 +71,6 @@ function injectProfileUI() {
 
     document.body.appendChild(panel);
     makeDraggable(panel, document.getElementById('drag-handle-profile'));
-    // Touch resize handle
-    (function() {
-        const resizeHandle = document.createElement('div');
-        resizeHandle.style.cssText = 'width:30px;height:6px;background:#00ffcc;border-radius:3px;margin:6px auto 0 auto;cursor:ns-resize;opacity:0.5;';
-        panel.appendChild(resizeHandle);
-        let startY, startH;
-        function onStart(e) { startY = (e.touches ? e.touches[0].clientY : e.clientY); startH = panel.offsetWidth; }
-        function onMove(e) {
-            e.preventDefault();
-            const dy = (e.touches ? e.touches[0].clientY : e.clientY) - startY;
-            const newW = Math.min(360, Math.max(160, startH + dy));
-            panel.style.width = newW + 'px';
-        }
-        resizeHandle.addEventListener('touchstart', onStart, { passive: true });
-        resizeHandle.addEventListener('touchmove', onMove, { passive: false });
-        resizeHandle.addEventListener('mousedown', onStart);
-        document.addEventListener('mousemove', (e) => { if (startY !== undefined) onMove(e); });
-        document.addEventListener('mouseup', () => { startY = undefined; });
-    })();
     // Alternate header text between brand name and drag hint
     (function() {
         const el = document.getElementById('profile-header-text');
@@ -123,9 +104,7 @@ function injectProfileUI() {
     btnStart.onclick = async () => {
         const queue = Array.from(collectedLinks);
         if (queue.length === 0) return alert("Gather links first!");
-        const choice = await showOutputDialog();
-        if (!choice) return;
-        await chrome.storage.local.set({ scrapeState: 'SCRAPING', scrapeQueue: queue, scrapedData: [], outputMode: choice });
+        await chrome.storage.local.set({ scrapeState: 'SCRAPING', scrapeQueue: queue, scrapedData: [] });
         window.location.href = queue[0];
     };
 }
@@ -135,7 +114,7 @@ function injectPostUI(queueLen, dataLen) {
     if (document.getElementById('ig-post-panel')) return;
     const panel = document.createElement('div');
     panel.id = 'ig-post-panel';
-    panel.style.cssText = `position: fixed; top: 20px; left: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; border: 1px solid #ff007f; min-width: 160px; max-width: 360px;`;
+    panel.style.cssText = `position: fixed; top: 20px; left: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; border: 1px solid #ff007f; min-width: 160px; max-width: 340px; resize: horizontal; overflow: auto;`;
 
     panel.innerHTML = `
         <div id="drag-handle-post" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#ff007f; font-size:14px;">↕ Drag to Move</b></div>
@@ -368,215 +347,14 @@ async function extractPostData(queue, scrapedData) {
 
     if (queue.length > 0) window.location.href = queue[0];
     else {
-        const { outputMode = 'html' } = await chrome.storage.local.get(['outputMode']);
         await chrome.storage.local.set({ scrapeState: 'IDLE' });
-        if (outputMode === 'html') exportToHTML(scrapedData);
-        else if (outputMode === 'zip') await exportToZip(scrapedData, false);
-        else if (outputMode === 'both') await exportToZip(scrapedData, true);
+        exportToHTML(scrapedData);
     }
 }
 
-// --- OUTPUT TYPE DIALOG ---
-function showOutputDialog() {
-    return new Promise((resolve) => {
-        const existing = document.getElementById('ig-output-dialog');
-        if (existing) existing.remove();
-        const overlay = document.createElement('div');
-        overlay.id = 'ig-output-dialog';
-        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999999;display:flex;align-items:center;justify-content:center;font-family:sans-serif;';
-        overlay.innerHTML = `
-        <div style="background:#1a1a1a;border-radius:16px;padding:28px 24px;max-width:340px;width:90%;border:1px solid #ff007f;box-shadow:0 0 40px rgba(255,0,127,0.3);">
-            <h2 style="color:#ff007f;margin:0 0 6px 0;font-size:18px;text-align:center;">Choose Output Format</h2>
-            <p style="color:#aaa;font-size:12px;text-align:center;margin:0 0 20px 0;">How would you like to save your scraped data?</p>
-            <div id="opt-html" class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;transition:border-color 0.2s;">
-                <div style="color:white;font-weight:bold;font-size:14px;">🌐 HTML Catalog</div>
-                <div style="color:#aaa;font-size:11px;margin-top:4px;">Single HTML file with all media embedded. <span style="color:#f59e0b;font-weight:bold;">⚠ Media links expire in hours — open and download soon.</span></div>
-            </div>
-            <div id="opt-zip" class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;transition:border-color 0.2s;">
-                <div style="color:white;font-weight:bold;font-size:14px;">📦 ZIP Folder</div>
-                <div style="color:#aaa;font-size:11px;margin-top:4px;">Downloads all media permanently. Each post gets its own folder with images, videos and caption. No expiry.</div>
-            </div>
-            <div id="opt-both" class="ig-opt" style="border:2px solid #444;border-radius:10px;padding:12px;margin-bottom:18px;cursor:pointer;transition:border-color 0.2s;">
-                <div style="color:white;font-weight:bold;font-size:14px;">✨ Both <span style="background:#ff007f;color:white;font-size:10px;padding:2px 6px;border-radius:4px;margin-left:6px;">RECOMMENDED</span></div>
-                <div style="color:#aaa;font-size:11px;margin-top:4px;">Export both the HTML catalog and the ZIP folder.</div>
-            </div>
-            <div style="display:flex;gap:10px;">
-                <button style="flex:1;background:#333;color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;font-size:13px;">Cancel</button>
-                <button style="flex:2;background:#ff007f;color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:13px;">Start Scraping ▶</button>
-            </div>
-        </div>`;
-        window._igResolve = resolve;
-        window._igChoice = null;
-        document.body.appendChild(overlay);
-
-        // Mobile-friendly touch+click handlers for option selection
-        function attachOptHandler(id, value, borderColor) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            function selectOpt(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                window._igChoice = value;
-                document.querySelectorAll('.ig-opt').forEach(o => o.style.borderColor = '#444');
-                el.style.borderColor = borderColor;
-            }
-            el.addEventListener('click', selectOpt);
-            el.addEventListener('touchend', selectOpt, { passive: false });
-        }
-        attachOptHandler('opt-html', 'html', '#ff007f');
-        attachOptHandler('opt-zip',  'zip',  '#00ffcc');
-        attachOptHandler('opt-both', 'both', '#7c3aed');
-
-        // Cancel button
-        const cancelBtn = overlay.querySelector('button:first-of-type');
-        function doCancel(e) { e.preventDefault(); overlay.remove(); resolve(null); }
-        cancelBtn.addEventListener('click', doCancel);
-        cancelBtn.addEventListener('touchend', doCancel, { passive: false });
-
-        // Start button
-        const startBtn = overlay.querySelector('button:last-of-type');
-        function doStart(e) {
-            e.preventDefault();
-            const c = window._igChoice;
-            if (!c) { alert('Please select an option first.'); return; }
-            overlay.remove();
-            resolve(c);
-        }
-        startBtn.addEventListener('click', doStart);
-        startBtn.addEventListener('touchend', doStart, { passive: false });
-    });
-}
-
-// --- ZIP EXPORTER ---
-async function exportToZip(data, includeHTML = false) {
-    if (!data || data.length === 0) return alert("No data to zip!");
-    // JSZip is bundled via manifest content_scripts — use directly, not via window
-    if (typeof JSZip === 'undefined') return alert("JSZip not loaded. Please reload the page and try again.");
-    const zip = new JSZip();
-    const _ts = new Date().toISOString().slice(0,10);
-    const rootFolder = zip.folder('InstaPageScrape_' + _ts);
-    const prog = document.createElement('div');
-    prog.id = 'ig-zip-progress';
-    prog.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:sans-serif;color:white;';
-    prog.innerHTML = '<div style="font-size:32px;margin-bottom:16px;">📦</div>'
-        + '<div style="font-size:18px;font-weight:bold;color:#ff007f;margin-bottom:8px;">Building ZIP...</div>'
-        + '<div id="zip-prog-text" style="font-size:13px;color:#aaa;margin-bottom:20px;">Starting...</div>'
-        + '<div style="width:280px;height:8px;background:#333;border-radius:4px;overflow:hidden;">'
-        + '<div id="zip-prog-bar" style="height:100%;background:linear-gradient(90deg,#ff007f,#7c3aed);width:0%;transition:width 0.3s;border-radius:4px;"></div></div>';
-    document.body.appendChild(prog);
-    const updateProg = (text, pct) => {
-        const t = document.getElementById('zip-prog-text');
-        const b = document.getElementById('zip-prog-bar');
-        if (t) t.textContent = text;
-        if (b) b.style.width = pct + '%';
-    };
-    for (let i = 0; i < data.length; i++) {
-        const post = data[i];
-        updateProg('Downloading Post ' + (i+1) + ' of ' + data.length + '...', Math.round((i/data.length)*90));
-        let imgCount = 0, vidCount = 0;
-        post.media.forEach(m => { if (m.includes('.mp4') || m.includes('video')) vidCount++; else imgCount++; });
-        const postType = post.media.length > 1 ? 'Carousel' : vidCount > 0 ? 'Reel' : 'Image';
-        const dateStr = post.date ? post.date.replace(/ /g, '-') : 'Unknown-Date';
-        const folderName = 'Post ' + (i+1) + '_' + postType + '_' + dateStr;
-        const postFolder = rootFolder.folder(folderName);
-        const captionText = [
-            'Post #' + (i+1),
-            'URL: ' + post.url,
-            'Type: ' + postType,
-            'Date: ' + (post.date || 'Unknown'),
-            'Price: ' + post.price,
-            '',
-            '--- Caption ---',
-            post.caption || '(no caption)'
-        ].join('\n');
-        postFolder.file('caption.txt', captionText);
-        let mediaIndex = 1;
-        for (const mediaUrl of post.media) {
-            const ext = (mediaUrl.includes('.mp4') || mediaUrl.includes('video')) ? '.mp4' : '.jpg';
-            const filename = 'media_' + String(mediaIndex).padStart(2, '0') + ext;
-            let blob = null;
-            try {
-                const r = await fetch(mediaUrl, { credentials: 'include', mode: 'cors', headers: { 'Referer': 'https://www.instagram.com/' } });
-                if (r.ok) blob = await r.blob();
-            } catch(e1) {}
-            if (!blob) {
-                try {
-                    blob = await new Promise((res, rej) => {
-                        const xhr = new XMLHttpRequest();
-                        xhr.open('GET', mediaUrl, true);
-                        xhr.responseType = 'blob';
-                        xhr.withCredentials = true;
-                        xhr.setRequestHeader('Referer', 'https://www.instagram.com/');
-                        xhr.onload = () => xhr.status === 200 ? res(xhr.response) : rej();
-                        xhr.onerror = rej;
-                        xhr.send();
-                    });
-                } catch(e2) {}
-            }
-            if (!blob) {
-                try {
-                    blob = await new Promise((res, rej) => {
-                        const id = 'igfetch_' + Date.now() + '_' + mediaIndex;
-                        const script = document.createElement('script');
-                        const urlJson = JSON.stringify(mediaUrl);
-                        const idJson = JSON.stringify(id);
-                        script.textContent = 'fetch(' + urlJson + ',{credentials:"include"}).then(r=>r.blob()).then(b=>{const rd=new FileReader();rd.onload=()=>window.dispatchEvent(new CustomEvent(' + idJson + ',{detail:rd.result}));rd.readAsDataURL(b);}).catch(()=>window.dispatchEvent(new CustomEvent(' + idJson + ',{detail:null})));';
-                        const timeout = setTimeout(() => { window.removeEventListener(id, handler); rej('timeout'); }, 30000);
-                        const handler = (e) => {
-                            clearTimeout(timeout);
-                            window.removeEventListener(id, handler);
-                            if (!e.detail) return rej('no data');
-                            const parts = e.detail.split(',');
-                            const mime = parts[0].match(/:(.*?);/)[1];
-                            const bin = atob(parts[1]);
-                            const arr = new Uint8Array(bin.length);
-                            for (let x = 0; x < bin.length; x++) arr[x] = bin.charCodeAt(x);
-                            res(new Blob([arr], { type: mime }));
-                        };
-                        window.addEventListener(id, handler);
-                        document.head.appendChild(script);
-                        script.remove();
-                    });
-                } catch(e3) {}
-            }
-            if (blob) {
-                postFolder.file(filename, blob);
-            } else {
-                postFolder.file('media_' + String(mediaIndex).padStart(2,'0') + '_url.txt', 'Could not download.\nOpen manually: ' + mediaUrl);
-            }
-            mediaIndex++;
-        }
-    }
-    // If Both was selected, generate the HTML and add it into the ZIP too
-    if (includeHTML) {
-        updateProg('Adding HTML catalog to ZIP...', 93);
-        const htmlStr = generateHTMLString(data);
-        const _now2 = new Date();
-        const _ts2 = _now2.toISOString().slice(0,10) + '_' + _now2.toTimeString().slice(0,8).replace(/:/g,'');
-        rootFolder.file('InstaPageScrape_Catalog_' + _ts2 + '.html', htmlStr);
-    }
-
-    updateProg('Compressing ZIP...', 95);
-    const zipBlob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' }, (meta) => {
-        updateProg('Compressing... ' + Math.round(meta.percent) + '%', 95 + Math.round(meta.percent * 0.05));
-    });
-    const url = URL.createObjectURL(zipBlob);
-    const a = document.createElement('a');
-    const _now = new Date();
-    const _fts = _now.toISOString().slice(0,10) + '_' + _now.toTimeString().slice(0,8).replace(/:/g,'');
-    a.href = url;
-    a.download = 'InstaPageScrape_ZIP_' + _fts + '.zip';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    const p = document.getElementById('ig-zip-progress');
-    if (p) p.remove();
-    alert('ZIP export complete! ' + data.length + ' posts saved.');
-}
-
-// --- HTML STRING GENERATOR (shared by HTML export and ZIP both-mode) ---
-function generateHTMLString(data) {
+// --- FULL FEATURED HTML GENERATOR ---
+function exportToHTML(data) {
+    if (!data || data.length === 0) return alert("No data scraped!");
     let pricedPosts = [];
     data.forEach((post, index) => {
         if (post.price !== "Price not mentioned") {
@@ -670,13 +448,6 @@ function generateHTMLString(data) {
     });
 
     htmlContent += `</body></html>`;
-    return htmlContent;
-}
-
-// --- HTML FILE EXPORTER ---
-function exportToHTML(data) {
-    if (!data || data.length === 0) return alert("No data scraped!");
-    const htmlContent = generateHTMLString(data);
     const blob = new Blob([htmlContent], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');

@@ -18,12 +18,11 @@ echo "▶ Build directory: $BUILD_DIR"
 cp "$SCRIPT_DIR/manifest.json" "$BUILD_DIR/manifest.json"
 cp "$SCRIPT_DIR/background.js" "$BUILD_DIR/background.js"
 cp "$SCRIPT_DIR/content.js"    "$BUILD_DIR/content.js"
-cp "$SCRIPT_DIR/jszip.min.js" "$BUILD_DIR/jszip.min.js"
 echo "▶ Files copied successfully"
 
 cd "$BUILD_DIR"
 rm -f "$ZIP_NAME"
-zip -r "$ZIP_NAME" manifest.json background.js content.js jszip.min.js
+zip -r "$ZIP_NAME" manifest.json background.js content.js
 echo "▶ ZIP created: $BUILD_DIR/$ZIP_NAME"
 
 if [ -d "$HOME/storage/downloads" ]; then
