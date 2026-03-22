@@ -450,13 +450,8 @@ function showOutputDialog() {
 // --- ZIP EXPORTER ---
 async function exportToZip(data, includeHTML = false) {
     if (!data || data.length === 0) return alert("No data to zip!");
-    await new Promise((resolve, reject) => {
-        if (window.JSZip) return resolve();
-        const s = document.createElement('script');
-        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
-        s.onload = resolve; s.onerror = reject;
-        document.head.appendChild(s);
-    });
+    // JSZip is bundled with the extension and loaded via manifest content_scripts
+    if (!window.JSZip) return alert("JSZip not loaded. Please reload the page and try again.");
     const zip = new window.JSZip();
     const _ts = new Date().toISOString().slice(0,10);
     const rootFolder = zip.folder('InstaPageScrape_' + _ts);
