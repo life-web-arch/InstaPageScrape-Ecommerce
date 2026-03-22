@@ -14,6 +14,16 @@ echo "✅ All local files deleted"
 ```
 ---
 
+
+## Clone Repo
+
+```bash
+gh repo clone InstaPageScrape-Ecommerce
+cd InstaPageScrape-Ecommerce
+bash setup.sh
+```
+---
+
 **Release workflow going forward:**
 
 ```bash
