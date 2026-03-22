@@ -69,7 +69,9 @@ bash setup.sh
 
 **Option A — Download release ZIP (easiest, no Termux needed):**
 1. Download `instapagescrape.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
-2. Open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP
+2. Open Kiwi Browser → Menu → Extensions → ⋮ → + (from zip/.crx/.user.js) → select the ZIP
+3. Navigate to any Instagram brand profile and the **InstaPageScrape** panel will appear
+(⚠️keep refreshing the Insta profile page, until the extension panel popup shows up) 
 
 **Option B — via [Termux](https://f-droid.org/packages/com.termux) + git:**
 ```bash
@@ -93,8 +95,9 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
    - AirDrop it from a Mac where you ran `bash setup.sh`
    - Upload to iCloud Drive / Google Drive from another device and open on iPhone
    - Use [a-Shell](https://apps.apple.com/app/a-shell/id1473805438) (free terminal app for iOS) — run `bash setup.sh` after cloning with `gh`
-3. In Orion → Settings → Extensions → tap **"+"** → **Load unpacked extension** → select the ZIP
+3. In Orion → Settings → Extensions → tap **"+"** → **Load unpacked extension** or look for options to select/import the extension as a ZIP file e.g. "+ (from zip/.crx/.user.js)" → select the ZIP
 4. Navigate to any Instagram brand profile and the **InstaPageScrape** panel will appear
+(⚠️keep refreshing the Insta profile page, until the extension panel popup shows up) 
 
 > **Note:** Safari extensions via the App Store cannot run Chrome extension APIs so they will not work. Orion is currently the only iOS browser with full Chrome extension support.
 
@@ -104,9 +107,9 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 <summary><b>🖥️ Desktop — Chrome / Edge</b></summary>
 <br>
 
-1. Run `bash setup.sh`
+1. Run `bash setup.sh` or download the latest extension ZIP directly from here [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
 2. Open `chrome://extensions` → Enable Developer Mode
-3. Click **Load unpacked** → select `~/instascraper_auto/`
+3. Click **Load unpacked** or "+ (from zip/.crx/.user.js)" → select `~/instascraper_auto/`
 
 </details>
 
@@ -132,7 +135,7 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 
 **Via release (easiest):**
 1. Download the new ZIP from [Releases](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases)
-2. In Kiwi / Orion → Extensions → Remove old → Load unpacked → select new ZIP
+2. In Kiwi / Orion → Extensions → Remove the old extension → Load unpacked / '+ (from zip/.crx/.user.js)' → select the new updated version's ZIP
 
 **Via git:**
 ```bash
