@@ -1,9 +1,11 @@
 
 # Remove local repo and build folder
+```
 rm -rf ~/InstaPageScrape-Ecommerce
 rm -rf ~/instascraper_auto
 rm -f ~/instapagescrape.zip
 rm -f ~/fix.py
+```
 
 # Verify everything is gone
 ls ~ | grep -i "insta\|scraper\|fix"
