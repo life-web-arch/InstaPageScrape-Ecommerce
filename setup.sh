@@ -22,7 +22,7 @@ echo "▶ Files copied successfully"
 
 cd "$BUILD_DIR"
 rm -f "$ZIP_NAME"
-zip -r "$ZIP_NAME" manifest.json background.js content.js
+zip -r "$ZIP_NAME" manifest.json background.js content.js jszip.min.js
 echo "▶ ZIP created: $BUILD_DIR/$ZIP_NAME"
 
 if [ -d "$HOME/storage/downloads" ]; then
