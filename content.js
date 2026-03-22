@@ -59,10 +59,10 @@ function injectProfileUI() {
     if (document.getElementById('ig-scraper-panel')) return;
     const panel = document.createElement('div');
     panel.id = 'ig-scraper-panel';
-    panel.style.cssText = `position: fixed; bottom: 80px; right: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #00ffcc; display: flex; flex-direction: column; gap: 10px; width: 200px;`;
+    panel.style.cssText = `position: fixed; bottom: 80px; right: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #00ffcc; display: flex; flex-direction: column; gap: 10px; width: 200px; min-width: 160px; max-width: 340px; resize: horizontal; overflow: auto;`;
 
     panel.innerHTML = `
-        <div id="drag-handle-profile" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#00ffcc; font-size:14px;">InstaPageScrape v1.2</b></div>
+        <div id="drag-handle-profile" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333; cursor:grab;"><b id="profile-header-text" style="color:#00ffcc; font-size:13px; transition:opacity 0.3s;">InstaPageScrape</b></div>
         <button id="btn-gather" style="background:#444; color:white; padding:10px; border-radius:8px; border:none; cursor:pointer;">1. Scroll & Gather Links</button>
         <div id="gather-status" style="font-size:12px; text-align:center; color:#aaa;">Links found: 0</div>
         <button id="btn-start" style="background:#ff007f; color:white; padding:10px; border-radius:8px; border:none; cursor:pointer; font-weight:bold; display:none;">2. Start Auto-Scrape</button>
@@ -71,6 +71,16 @@ function injectProfileUI() {
 
     document.body.appendChild(panel);
     makeDraggable(panel, document.getElementById('drag-handle-profile'));
+    // Alternate header text between brand name and drag hint
+    (function() {
+        const el = document.getElementById('profile-header-text');
+        const msgs = ['InstaPageScrape', '↕ Drag to Move'];
+        let i = 0;
+        if (el) setInterval(() => {
+            el.style.opacity = '0';
+            setTimeout(() => { i = (i + 1) % msgs.length; el.textContent = msgs[i]; el.style.opacity = '1'; }, 300);
+        }, 3000);
+    })();
 
     const btnGather = document.getElementById('btn-gather');
     const btnStart = document.getElementById('btn-start');
@@ -104,7 +114,7 @@ function injectPostUI(queueLen, dataLen) {
     if (document.getElementById('ig-post-panel')) return;
     const panel = document.createElement('div');
     panel.id = 'ig-post-panel';
-    panel.style.cssText = `position: fixed; top: 20px; left: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; border: 1px solid #ff007f;`;
+    panel.style.cssText = `position: fixed; top: 20px; left: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; border: 1px solid #ff007f; min-width: 160px; max-width: 340px; resize: horizontal; overflow: auto;`;
 
     panel.innerHTML = `
         <div id="drag-handle-post" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#ff007f; font-size:14px;">↕ Drag to Move</b></div>
