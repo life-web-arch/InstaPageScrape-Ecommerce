@@ -4,7 +4,7 @@ A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom bra
 
 [![Latest Release](https://img.shields.io/github/v/release/life-web-arch/InstaPageScrape-Ecommerce?label=Download+v1.0&color=ff007f)](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest/download/instapagescrape.zip)
 
-> **Quickest install:** Download the ZIP directly from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest) — no Termux or git required.
+> **Quickest install:** Download the ZIP directly from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest) — no Termux/Terminal or git required.
 
 ---
 
@@ -46,13 +46,13 @@ bash setup.sh
 
 ## Installation
 
-### Android (Kiwi Browser)
+### Android (Kiwi Browser/any browser with Extension support)
 
 **Option A — Download release ZIP (easiest, no Termux needed):**
 1. Download `instapagescrape.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
 2. Open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP
 
-**Option B — via Termux + git:**
+**Option B — via [Termux](https://f-droid.org/packages/com.termux) + git:**
 ```bash
 gh repo clone InstaPageScrape-Ecommerce
 cd InstaPageScrape-Ecommerce
@@ -60,7 +60,7 @@ bash setup.sh
 ```
 Then open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP from Downloads
 
-### iOS (iPhone / iPad — Orion Browser)
+### iOS (iPhone / iPad — Orion Browser/any browser with Extension support)
 
 iOS Safari does not support extensions, but **Orion Browser** by Kagi supports Chrome extensions natively on iOS with no sideloading required.
 
