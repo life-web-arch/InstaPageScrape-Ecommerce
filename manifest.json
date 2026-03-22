@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Dham Auto-Scraper V5.3",
-  "version": "5.3",
-  "description": "Auto-navigates posts and exports a single HTML catalog. Uses page JSON extraction for reliable video capture on all browsers.",
+  "name": "InstaPageScrape v1.0",
+  "version": "1.0",
+  "description": "Auto-scrapes Instagram ecom brand profiles and exports a self-contained HTML catalog with images, reels, captions, prices and dates.",
   "permissions": [
     "activeTab",
     "scripting",

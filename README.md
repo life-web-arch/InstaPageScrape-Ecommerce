@@ -1,6 +1,10 @@
-# InstaPageScrape — Dham Clothing
+# InstaPageScrape
 
-A Chrome/Kiwi Browser extension that auto-navigates an Instagram profile's posts and exports a single, self-contained HTML catalog with all images, reels, captions, prices, and post dates.
+A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom brand profile and exports a single, self-contained HTML catalog with all images, reels, captions, prices, and post dates. Useful for cataloging products from any clothing, jewellery, or lifestyle brand on Instagram.
+
+[![Latest Release](https://img.shields.io/github/v/release/life-web-arch/InstaPageScrape-dham_clothing?label=Download+v1.0&color=ff007f)](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest/download/dham_auto_scraper.zip)
+
+> **Quickest install:** Download the ZIP directly from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest) — no Termux or git required.
 
 ---
 
@@ -14,8 +18,8 @@ A Chrome/Kiwi Browser extension that auto-navigates an Instagram profile's posts
 - **Draggable UI** — the scraper panel can be repositioned on screen
 - **Filter bar** — filter by Images / Reels / Carousels / Price Found
 - **Download buttons** — per-media download for every image and video
-- **Unique filenames** — exported HTML named with full date + time (`DhamClothing_Catalog_YYYY-MM-DD_HHMMSS.html`)
-- Works on **Kiwi Browser (Android)** and any extension-supported Chromium browser
+- **Unique filenames** — exported HTML named with full date + time (`InstaPageScrape_Catalog_YYYY-MM-DD_HHMMSS.html`)
+- Works on **Kiwi Browser (Android)**, **Orion Browser (iOS)**, and any Chromium browser with extension support
 
 ---
 
@@ -26,14 +30,13 @@ A Chrome/Kiwi Browser extension that auto-navigates an Instagram profile's posts
 | `manifest.json` | Extension manifest (MV3) |
 | `background.js` | Service worker — secondary video capture via webRequest |
 | `content.js` | Main logic — UI injection, scraping, HTML export |
-| `setup.sh` | One-shot Termux script — writes all files, zips, saves to Downloads |
+| `setup.sh` | One-shot script — writes all files, zips, saves to Downloads |
 
 ---
 
 ## Quick Start
 
 ```bash
-# Clone and build in one go
 gh repo clone InstaPageScrape-dham_clothing
 cd InstaPageScrape-dham_clothing
 bash setup.sh
@@ -43,7 +46,7 @@ bash setup.sh
 
 ## Installation
 
-### Android (Kiwi Browser + Termux)
+### Android (Kiwi Browser)
 
 **Option A — Download release ZIP (easiest, no Termux needed):**
 1. Download `dham_auto_scraper.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest)
@@ -57,20 +60,20 @@ bash setup.sh
 ```
 Then open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP from Downloads
 
-### iOS (iPhone / iPad)
+### iOS (iPhone / iPad — Orion Browser)
 
 iOS Safari does not support extensions, but **Orion Browser** by Kagi supports Chrome extensions natively on iOS with no sideloading required.
 
 1. Install [Orion Browser](https://apps.apple.com/app/orion-browser-by-kagi/id1484498200) from the App Store (free)
 2. Get the ZIP onto your iPhone — easiest options:
-   - **Download directly:** grab `dham_auto_scraper.zip` from the [Latest Release](https://github.com/YOUR_USERNAME/InstaPageScrape-dham_clothing/releases/latest) in Safari, then open with Orion
+   - **Download directly:** grab `dham_auto_scraper.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest) in Safari, then open with Orion
    - AirDrop it from a Mac where you ran `bash setup.sh`
    - Upload to iCloud Drive / Google Drive from another device and open on iPhone
    - Use [a-Shell](https://apps.apple.com/app/a-shell/id1473805438) (free terminal app for iOS) — run `bash setup.sh` after cloning with `gh`
 3. In Orion → Settings → Extensions → tap **"+"** → **Load unpacked extension** → select the ZIP
-4. Navigate to an Instagram profile and the **✥ V5.3 ✥** panel will appear
+4. Navigate to any Instagram brand profile and the **InstaPageScrape v1.0** panel will appear
 
-> **Note:** Safari extensions via the App Store cannot run Chrome extension APIs (`chrome.storage`, `chrome.webRequest`) so they won't work. Orion is currently the only iOS browser with full Chrome extension support.
+> **Note:** Safari extensions via the App Store cannot run Chrome extension APIs (`chrome.storage`, `chrome.webRequest`) so they will not work. Orion is currently the only iOS browser with full Chrome extension support.
 
 ---
 
@@ -84,24 +87,28 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 
 ## Usage
 
-1. Open an Instagram profile page in Kiwi Browser
+1. Open any Instagram brand/ecom profile page in Kiwi or Orion Browser
 2. Tap **"1. Scroll & Gather Links"** — scroll down to load posts, tap again to stop
 3. Tap **"2. Start Auto-Scrape"** — the extension navigates each post automatically
 4. When done, the HTML catalog downloads automatically
-5. Open the HTML file in any browser to browse the catalog
+5. Open the HTML file in any browser to browse, filter, and download media
 
-> To stop early and export what's scraped so far, tap **"Stop & Export HTML"**.
+> To stop early and export what has been scraped so far, tap **"Stop & Export HTML"**.
 
 ---
 
 ## Updating
 
+**Via release (easiest):**
+1. Download the new ZIP from [Releases](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases)
+2. In Kiwi / Orion → Extensions → Remove old → Load unpacked → select new ZIP
+
+**Via git:**
 ```bash
 cd InstaPageScrape-dham_clothing
 git pull
 bash setup.sh
 ```
-
 Then reload the extension in Kiwi Browser → Extensions → Reload.
 
 ---
@@ -120,6 +127,7 @@ For reels, only the single highest-quality URL is kept. For carousel posts, all 
 
 ## Notes
 
+- Works with any public Instagram ecom/brand profile
 - Instagram CDN URLs expire — download media soon after scraping
 - No data leaves your device; everything is processed locally
-- Tested on Kiwi Browser (Android) v131+
+- Tested on Kiwi Browser (Android) v131+ and Orion Browser (iOS) v1.x

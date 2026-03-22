@@ -62,7 +62,7 @@ function injectProfileUI() {
     panel.style.cssText = `position: fixed; bottom: 80px; right: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #00ffcc; display: flex; flex-direction: column; gap: 10px; width: 200px;`;
 
     panel.innerHTML = `
-        <div id="drag-handle-profile" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#00ffcc; font-size:14px;">✥ V5.3 ✥</b></div>
+        <div id="drag-handle-profile" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#00ffcc; font-size:14px;">InstaPageScrape v1.0</b></div>
         <button id="btn-gather" style="background:#444; color:white; padding:10px; border-radius:8px; border:none; cursor:pointer;">1. Scroll & Gather Links</button>
         <div id="gather-status" style="font-size:12px; text-align:center; color:#aaa;">Links found: 0</div>
         <button id="btn-start" style="background:#ff007f; color:white; padding:10px; border-radius:8px; border:none; cursor:pointer; font-weight:bold; display:none;">2. Start Auto-Scrape</button>
@@ -107,7 +107,7 @@ function injectPostUI(queueLen, dataLen) {
     panel.style.cssText = `position: fixed; top: 20px; left: 20px; z-index: 999999; background: rgba(0, 0, 0, 0.9); padding: 0 15px 15px 15px; border-radius: 12px; color: white; font-family: sans-serif; border: 1px solid #ff007f;`;
 
     panel.innerHTML = `
-        <div id="drag-handle-post" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#ff007f; font-size:14px;">✥ Scraping... ✥</b></div>
+        <div id="drag-handle-post" style="background:#111; margin:0 -15px 10px -15px; padding:10px; border-radius:12px 12px 0 0; text-align:center; border-bottom:1px solid #333;"><b style="color:#ff007f; font-size:14px;">↕ Drag to Move</b></div>
         <span style="font-size:12px;">Scraped: ${dataLen} | Remaining: ${queueLen}</span><br><br>
         <button id="btn-stop-export" style="background:#00ffcc; color:black; padding:8px; border-radius:5px; border:none; cursor:pointer; font-weight:bold; width:100%;">Stop & Export HTML</button>
     `;
@@ -370,7 +370,7 @@ function exportToHTML(data) {
 
     let htmlContent = `
     <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dham Clothing - Catalog</title><style>
+    <title>InstaPageScrape — Catalog</title><style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; padding: 15px; color: #333; margin: 0;}
     h1 { text-align: center; color: #ff007f; margin-bottom: 5px; } .stats { text-align: center; color: #666; font-size: 14px; margin-bottom: 20px; }
     .ranking-box { background: white; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #f1c40f;}
@@ -406,8 +406,8 @@ function exportToHTML(data) {
     function toggleFilters(){document.getElementById("filter-bar").classList.toggle("hidden")}
     function toggleRank(){const a=document.getElementById("rank-list"),b=document.getElementById("btn-rank");a.classList.contains("collapsed-rank")?(a.classList.remove("collapsed-rank"),a.classList.add("expanded-rank"),b.innerText="Show Less"):(a.classList.remove("expanded-rank"),a.classList.add("collapsed-rank"),b.innerText="Show All Items")}
     function toggleText(a){const b=a.previousElementSibling;b.classList.contains("collapsed")?(b.classList.remove("collapsed"),a.innerText="Show Less"):(b.classList.add("collapsed"),a.innerText="Show More")}
-    async function forceDownload(a,b){try{const c=await fetch(a),d=await c.blob(),e=document.createElement("a");e.href=URL.createObjectURL(d),e.download="DhamClothing_"+Date.now()+b,document.body.appendChild(e),e.click(),document.body.removeChild(e)}catch(c){window.open(a,"_blank")}}
-    </script></head><body><h1>Dham Clothing - Catalog</h1><div class="stats">Total Items Scraped: ${data.length}</div>${rankHtml}
+    async function forceDownload(a,b){try{const c=await fetch(a),d=await c.blob(),e=document.createElement("a");e.href=URL.createObjectURL(d),e.download="InstaPageScrape_"+Date.now()+b,document.body.appendChild(e),e.click(),document.body.removeChild(e)}catch(c){window.open(a,"_blank")}}
+    </script></head><body><h1>InstaPageScrape — Catalog</h1><div class="stats">Total Items Scraped: ${data.length}</div>${rankHtml}
     <div class="filter-container"><button class="toggle-btn" onclick="toggleFilters()">⚙️ Toggle Filters</button><div class="filter-bar hidden" id="filter-bar">
     <label class="filter-label"><input type="checkbox" id="chk-img" checked onchange="applyFilters()"> 🖼️ Images</label>
     <label class="filter-label"><input type="checkbox" id="chk-vid" checked onchange="applyFilters()"> 🎥 Reels</label>
@@ -442,10 +442,10 @@ function exportToHTML(data) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     const _now = new Date(); const _ts = _now.toISOString().slice(0,10) + '_' + _now.toTimeString().slice(0,8).replace(/:/g,'');
-    a.href = url; a.download = `DhamClothing_Catalog_${_ts}.html`;
+    a.href = url; a.download = `InstaPageScrape_Catalog_${_ts}.html`;
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    alert("Export Complete! HTML catalog generated successfully.");
+    alert("Export complete! Your catalog HTML has been saved.");
 }
 
 window.addEventListener('load', init);
