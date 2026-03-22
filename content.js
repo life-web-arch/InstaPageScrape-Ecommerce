@@ -370,13 +370,9 @@ async function extractPostData(queue, scrapedData) {
     else {
         const { outputMode = 'html' } = await chrome.storage.local.get(['outputMode']);
         await chrome.storage.local.set({ scrapeState: 'IDLE' });
-        if (outputMode === 'html' || outputMode === 'both') exportToHTML(scrapedData);
-        // Delay ZIP export so the HTML download has time to trigger before we start
-        // the ZIP process — prevents Kiwi Browser from interrupting the second download
-        if (outputMode === 'zip' || outputMode === 'both') {
-            await new Promise(r => setTimeout(r, 2500));
-            await exportToZip(scrapedData);
-        }
+        if (outputMode === 'html') exportToHTML(scrapedData);
+        else if (outputMode === 'zip') await exportToZip(scrapedData, false);
+        else if (outputMode === 'both') await exportToZip(scrapedData, true);
     }
 }
 
@@ -452,7 +448,7 @@ function showOutputDialog() {
 }
 
 // --- ZIP EXPORTER ---
-async function exportToZip(data) {
+async function exportToZip(data, includeHTML = false) {
     if (!data || data.length === 0) return alert("No data to zip!");
     await new Promise((resolve, reject) => {
         if (window.JSZip) return resolve();
@@ -556,6 +552,15 @@ async function exportToZip(data) {
             mediaIndex++;
         }
     }
+    // If Both was selected, generate the HTML and add it into the ZIP too
+    if (includeHTML) {
+        updateProg('Adding HTML catalog to ZIP...', 93);
+        const htmlStr = generateHTMLString(data);
+        const _now2 = new Date();
+        const _ts2 = _now2.toISOString().slice(0,10) + '_' + _now2.toTimeString().slice(0,8).replace(/:/g,'');
+        rootFolder.file('InstaPageScrape_Catalog_' + _ts2 + '.html', htmlStr);
+    }
+
     updateProg('Compressing ZIP...', 95);
     const zipBlob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' }, (meta) => {
         updateProg('Compressing... ' + Math.round(meta.percent) + '%', 95 + Math.round(meta.percent * 0.05));
@@ -575,9 +580,8 @@ async function exportToZip(data) {
     alert('ZIP export complete! ' + data.length + ' posts saved.');
 }
 
-// --- FULL FEATURED HTML GENERATOR ---
-function exportToHTML(data) {
-    if (!data || data.length === 0) return alert("No data scraped!");
+// --- HTML STRING GENERATOR (shared by HTML export and ZIP both-mode) ---
+function generateHTMLString(data) {
     let pricedPosts = [];
     data.forEach((post, index) => {
         if (post.price !== "Price not mentioned") {
@@ -671,6 +675,13 @@ function exportToHTML(data) {
     });
 
     htmlContent += `</body></html>`;
+    return htmlContent;
+}
+
+// --- HTML FILE EXPORTER ---
+function exportToHTML(data) {
+    if (!data || data.length === 0) return alert("No data scraped!");
+    const htmlContent = generateHTMLString(data);
     const blob = new Blob([htmlContent], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
