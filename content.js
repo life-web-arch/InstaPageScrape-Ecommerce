@@ -381,7 +381,19 @@ function exportToHTML(data) {
     let htmlContent = `
     <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InstaPageScrape — Catalog</title><style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; padding: 15px; color: #333; margin: 0;}
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; padding: 15px; color: #333; margin: 0; transition: background 0.3s, color 0.3s;}
+    body.dark { background: #0f0f0f; color: #eee; }
+    body.dark .post-card { background: #1a1a1a; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+    body.dark .ranking-box { background: #1a1a1a; }
+    body.dark .filter-bar { background: #1a1a1a; }
+    body.dark .caption-box { background: #111; }
+    body.dark .caption-text { color: #ccc; }
+    body.dark img, body.dark video { border-color: #333; }
+    body.dark .price-missing { background: #3a1a1a; }
+    body.dark .post-date { background: #2a2a2a; color: #aaa; }
+    body.dark .ranking-box li { border-bottom-color: #333; }
+    #dark-toggle { position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: #222; color: white; border: 2px solid #ff007f; border-radius: 50px; padding: 8px 16px; cursor: pointer; font-size: 14px; font-weight: bold; box-shadow: 0 4px 12px rgba(255,0,127,0.3); transition: all 0.2s; }
+    #dark-toggle:hover { background: #ff007f; }
     h1 { text-align: center; color: #ff007f; margin-bottom: 5px; } .stats { text-align: center; color: #666; font-size: 14px; margin-bottom: 20px; }
     .ranking-box { background: white; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #f1c40f;}
     .ranking-box h3 { margin: 0 0 10px 0; font-size: 16px; } .ranking-box ul { list-style: none; padding: 0; margin: 0; }
@@ -416,8 +428,11 @@ function exportToHTML(data) {
     function toggleFilters(){document.getElementById("filter-bar").classList.toggle("hidden")}
     function toggleRank(){const a=document.getElementById("rank-list"),b=document.getElementById("btn-rank");a.classList.contains("collapsed-rank")?(a.classList.remove("collapsed-rank"),a.classList.add("expanded-rank"),b.innerText="Show Less"):(a.classList.remove("expanded-rank"),a.classList.add("collapsed-rank"),b.innerText="Show All Items")}
     function toggleText(a){const b=a.previousElementSibling;b.classList.contains("collapsed")?(b.classList.remove("collapsed"),a.innerText="Show Less"):(b.classList.add("collapsed"),a.innerText="Show More")}
+    function toggleDark(){const d=document.body.classList.toggle("dark");document.getElementById("dark-toggle").textContent=d?"☀️ Light Mode":"🌙 Dark Mode";localStorage.setItem("igDark",d?"1":"0");}
+    window.onload=function(){if(localStorage.getItem("igDark")==="1"){document.body.classList.add("dark");document.getElementById("dark-toggle").textContent="☀️ Light Mode";}}
     async function forceDownload(a,b){try{const c=await fetch(a),d=await c.blob(),e=document.createElement("a");e.href=URL.createObjectURL(d),e.download="InstaPageScrape_"+Date.now()+b,document.body.appendChild(e),e.click(),document.body.removeChild(e)}catch(c){window.open(a,"_blank")}}
-    </script></head><body><h1>InstaPageScrape — Catalog</h1><div class="stats">Total Items Scraped: ${data.length}</div>${rankHtml}
+    </script></head><body><h1>InstaPageScrape — Catalog</h1>
+    <button id="dark-toggle" onclick="toggleDark()">🌙 Dark Mode</button><div class="stats">Total Items Scraped: ${data.length}</div>${rankHtml}
     <div class="filter-container"><button class="toggle-btn" onclick="toggleFilters()">⚙️ Toggle Filters</button><div class="filter-bar hidden" id="filter-bar">
     <label class="filter-label"><input type="checkbox" id="chk-img" checked onchange="applyFilters()"> 🖼️ Images</label>
     <label class="filter-label"><input type="checkbox" id="chk-vid" checked onchange="applyFilters()"> 🎥 Reels</label>
