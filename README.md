@@ -2,6 +2,22 @@
 
 A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom brand profile and exports a single, self-contained HTML catalog with all images, reels, captions, prices, and post dates. Useful for cataloging products from any clothing, jewellery, or lifestyle brand on Instagram.
 
+## Table of Contents
+
+- [How It Works](#how-it-works)
+- [Features](#features)
+- [Files](#files)
+- [Quick Start](#quick-start)
+- [Installation](#installation-tap--to-expand-the-corresponding-section)
+  - [Android — Kiwi Browser](#-android--kiwi-browser-or-any-browser-with-extension-support)
+  - [iOS — Orion Browser](#-ios--orion-browser-or-any-browser-with-extension-support)
+  - [Desktop — Chrome / Edge](#️-desktop--chrome--edge)
+- [Usage](#usage)
+- [Updating](#updating)
+- [How Video Capture Works](#how-video-capture-works)
+- [Safety Recommendation](#safety-recommendation)
+- [Notes](#notes)
+
 <p align="center">
   <a href="https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest/download/instapagescrape.zip">
     <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/download_btn.svg" alt="Download InstaPageScrape (LATEST)" width="420"/>
