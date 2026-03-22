@@ -1,6 +1,7 @@
 
 # Remove local repo and build folder
 ```
+cd ~/InstaPageScrape-Ecommerce
 rm -rf ~/InstaPageScrape-Ecommerce
 rm -rf ~/instascraper_auto
 rm -f ~/instapagescrape.zip
