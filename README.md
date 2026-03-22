@@ -9,9 +9,9 @@ A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom bra
 - [Files](#files)
 - [Quick Start](#quick-start)
 - [Installation](#installation-tap--to-expand-the-corresponding-section)
-  - [Android — Kiwi Browser](#android)
-  - [iOS — Orion Browser](#ios)
-  - [Desktop — Chrome / Edge](#desktop)
+  - [Android — Kiwi Browser](#android--kiwi-browser)
+  - [iOS — Orion Browser](#ios--orion-browser)
+  - [Desktop — Chrome / Edge](#desktop--chrome--edge)
 - [Usage](#usage)
 - [Updating](#updating)
 - [How Video Capture Works](#how-video-capture-works)
@@ -81,7 +81,8 @@ bash setup.sh
 
 <details>
 <summary><b>📱 Android — Kiwi Browser (or any browser with extension support)</b></summary>
-<br>
+
+#### Android — Kiwi Browser
 
 **Option A — Download release ZIP (easiest, no Termux needed):**
 - 1. Download `instapagescrape.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
@@ -112,7 +113,8 @@ Then open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extensi
 
 <details>
 <summary><b>🍎 iOS — Orion Browser (or any browser with extension support)</b></summary>
-<br>
+
+#### iOS — Orion Browser
 
 iOS Safari does not support extensions, but **Orion Browser** by Kagi supports Chrome extensions natively on iOS with no sideloading required.
 
@@ -132,7 +134,8 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 
 <details>
 <summary><b>🖥️ Desktop — Chrome / Edge</b></summary>
-<br>
+
+#### Desktop — Chrome / Edge
 
 1. Run `bash setup.sh` or download the latest extension ZIP directly from here [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
 2. Open `chrome://extensions` → Enable Developer Mode
