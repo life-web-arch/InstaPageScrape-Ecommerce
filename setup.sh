@@ -2,12 +2,12 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BUILD_DIR="$HOME/dham_scraper_auto"
-ZIP_NAME="dham_auto_scraper.zip"
+BUILD_DIR="$HOME/instascraper_auto"
+ZIP_NAME="instapagescrape.zip"
 
 echo ""
 echo "╔══════════════════════════════════════════╗"
-echo "║   InstaPageScrape — Dham Clothing        ║"
+echo "║   InstaPageScrape — Ecom Brand        ║"
 echo "║   Extension Builder                      ║"
 echo "╚══════════════════════════════════════════╝"
 echo ""
@@ -42,7 +42,7 @@ elif [ -d "$HOME/Downloads" ]; then
     echo "Next steps:"
     echo "  1. Open Chrome/Edge → chrome://extensions"
     echo "  2. Enable Developer Mode"
-    echo "  3. Click 'Load unpacked' → select ~/dham_scraper_auto/"
+    echo "  3. Click 'Load unpacked' → select ~/instascraper_auto/"
 else
     echo ""
     echo "✅ ZIP saved at: $BUILD_DIR/$ZIP_NAME"

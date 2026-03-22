@@ -149,7 +149,7 @@ function extractVideoFromPageJSON() {
             if (url.startsWith('http')) results.push(url);
         }
     } catch (e) {
-        console.log('[Dham] JSON extraction error:', e);
+        console.log('[InstaPageScrape] JSON extraction error:', e);
     }
     return [...new Set(results)];
 }

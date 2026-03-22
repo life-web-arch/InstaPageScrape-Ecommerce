@@ -2,9 +2,9 @@
 
 A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom brand profile and exports a single, self-contained HTML catalog with all images, reels, captions, prices, and post dates. Useful for cataloging products from any clothing, jewellery, or lifestyle brand on Instagram.
 
-[![Latest Release](https://img.shields.io/github/v/release/life-web-arch/InstaPageScrape-dham_clothing?label=Download+v1.0&color=ff007f)](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest/download/dham_auto_scraper.zip)
+[![Latest Release](https://img.shields.io/github/v/release/life-web-arch/InstaPageScrape-Ecommerce?label=Download+v1.0&color=ff007f)](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest/download/instapagescrape.zip)
 
-> **Quickest install:** Download the ZIP directly from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest) — no Termux or git required.
+> **Quickest install:** Download the ZIP directly from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest) — no Termux or git required.
 
 ---
 
@@ -37,8 +37,8 @@ A Chrome/Kiwi/Orion Browser extension that auto-navigates any Instagram ecom bra
 ## Quick Start
 
 ```bash
-gh repo clone InstaPageScrape-dham_clothing
-cd InstaPageScrape-dham_clothing
+gh repo clone InstaPageScrape-Ecommerce
+cd InstaPageScrape-Ecommerce
 bash setup.sh
 ```
 
@@ -49,13 +49,13 @@ bash setup.sh
 ### Android (Kiwi Browser)
 
 **Option A — Download release ZIP (easiest, no Termux needed):**
-1. Download `dham_auto_scraper.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest)
+1. Download `instapagescrape.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
 2. Open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP
 
 **Option B — via Termux + git:**
 ```bash
-gh repo clone InstaPageScrape-dham_clothing
-cd InstaPageScrape-dham_clothing
+gh repo clone InstaPageScrape-Ecommerce
+cd InstaPageScrape-Ecommerce
 bash setup.sh
 ```
 Then open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP from Downloads
@@ -66,7 +66,7 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 
 1. Install [Orion Browser](https://apps.apple.com/app/orion-browser-by-kagi/id1484498200) from the App Store (free)
 2. Get the ZIP onto your iPhone — easiest options:
-   - **Download directly:** grab `dham_auto_scraper.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest) in Safari, then open with Orion
+   - **Download directly:** grab `instapagescrape.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest) in Safari, then open with Orion
    - AirDrop it from a Mac where you ran `bash setup.sh`
    - Upload to iCloud Drive / Google Drive from another device and open on iPhone
    - Use [a-Shell](https://apps.apple.com/app/a-shell/id1473805438) (free terminal app for iOS) — run `bash setup.sh` after cloning with `gh`
@@ -81,7 +81,7 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 
 1. Run `bash setup.sh`
 2. Open `chrome://extensions` → Enable Developer Mode
-3. Click **Load unpacked** → select `~/dham_scraper_auto/`
+3. Click **Load unpacked** → select `~/instascraper_auto/`
 
 ---
 
@@ -100,12 +100,12 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 ## Updating
 
 **Via release (easiest):**
-1. Download the new ZIP from [Releases](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases)
+1. Download the new ZIP from [Releases](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases)
 2. In Kiwi / Orion → Extensions → Remove old → Load unpacked → select new ZIP
 
 **Via git:**
 ```bash
-cd InstaPageScrape-dham_clothing
+cd InstaPageScrape-Ecommerce
 git pull
 bash setup.sh
 ```
