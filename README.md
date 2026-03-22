@@ -45,9 +45,17 @@ bash setup.sh
 
 ### Android (Kiwi Browser + Termux)
 
-1. Run `bash setup.sh` in Termux
-2. Open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension
-3. Select the ZIP from your Downloads folder
+**Option A — Download release ZIP (easiest, no Termux needed):**
+1. Download `dham_auto_scraper.zip` from the [Latest Release](https://github.com/life-web-arch/InstaPageScrape-dham_clothing/releases/latest)
+2. Open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP
+
+**Option B — via Termux + git:**
+```bash
+gh repo clone InstaPageScrape-dham_clothing
+cd InstaPageScrape-dham_clothing
+bash setup.sh
+```
+Then open Kiwi Browser → Menu → Extensions → ⋮ → Load unpacked extension → select the ZIP from Downloads
 
 ### iOS (iPhone / iPad)
 
