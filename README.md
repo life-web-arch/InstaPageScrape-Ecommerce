@@ -138,8 +138,12 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 #### Desktop — Chrome / Edge
 
 1. Run `bash setup.sh` or download the latest extension ZIP directly from here [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
-2. Open `chrome://extensions` → Enable Developer Mode
-3. Click **Load unpacked** or "+ (from zip/.crx/.user.js)" → select `~/instascraper_auto/`
+2. Open `chrome://extensions`
+3. Tap **⋮ menu** → Extensions &nbsp;|&nbsp; 
+4. Tap **+ (from .zip/.crx/.user.js)** → select ZIP → tap **🔄 reload**
+5. Navigate to any Instagram brand profile and the **InstaPageScrape** panel will appear
+(⚠️keep refreshing the Insta profile page, until the extension panel popup shows up) 
+
 
 </details>
 
