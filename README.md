@@ -137,6 +137,11 @@ iOS Safari does not support extensions, but **Orion Browser** by Kagi supports C
 
 #### Desktop — Chrome / Edge
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/life-web-arch/InstaPageScrape-Ecommerce/main/assets/screenshots/Desktop_Installation.gif" width="600" alt="Desktop_Installation visual steps"/>
+</p>
+
+
 1. Run `bash setup.sh` or download the latest extension ZIP directly from here [Latest Release](https://github.com/life-web-arch/InstaPageScrape-Ecommerce/releases/latest)
 2. Open `chrome://extensions` → Enable Developer Mode
 3. Click **Load unpacked** → select  the extension ZIP File
